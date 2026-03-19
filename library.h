@@ -20,20 +20,28 @@ public:
     void AddFromConsole()
     {
         Book* book = new Book();
-        book->SetFromConsole();
-        books.push_back(book);
+        try
+        {
+            book->SetFromConsole();
+            books.push_back(book);
+        }
+        catch (const std::exception& e)
+        {
+            delete book; 
+            std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ð¸ ÐºÐ½Ð¸Ð³Ð¸: " << e.what() << std::endl;
+        }
     }
 
     void PrintAll() const
     {
         if (books.empty())
         {
-            std::cout << "Áèáëèîòåêà ïóñòà." << std::endl;
+            std::cout << "ÃÃ¨Ã¡Ã«Ã¨Ã®Ã²Ã¥ÃªÃ  Ã¯Ã³Ã±Ã²Ã ." << std::endl;
             return;
         }
 
-        std::cout << "\n--- Ñïèñîê êíèã  ---\n";
-        std::cout << "Àâòîð\t\tÍàçâàíèå\t\tÃîä\n";
+        std::cout << "\n--- Ã‘Ã¯Ã¨Ã±Ã®Ãª ÃªÃ­Ã¨Ã£  ---\n";
+        std::cout << "Ã€Ã¢Ã²Ã®Ã°\t\tÃÃ Ã§Ã¢Ã Ã­Ã¨Ã¥\t\tÃƒÃ®Ã¤\n";
         std::cout << "----------------------------------------\n";
 
         for (const auto& book : books)
