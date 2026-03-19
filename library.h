@@ -36,16 +36,30 @@ public:
     {
         if (books.empty())
         {
-            std::cout << "Áèáëèîòåêà ïóñòà." << std::endl;
+            std::cout << "Библиотека пуста." << std::endl;
             return;
         }
 
-        std::cout << "\n--- Ñïèñîê êíèã  ---\n";
-        std::cout << "Àâòîð\t\tÍàçâàíèå\t\tÃîä\n";
-        std::cout << "----------------------------------------\n";
+        std::cout << "\n--- Список книг  ---\n";
+        std::cout << "№п/п\tАвтор\t\tНазвание\t\tГод\n";
+        std::cout << "-------------------------------------------------------------\n";
 
         for (const auto& book : books)
             book->Print();
+    }
+
+    void DeleteIndex(int index) 
+    {
+        index--;
+        if (index < 0)
+        {
+            std::cout << "Неверно введен номер книги\n";
+            return;
+        }
+
+        delete books[index];
+        books.erase(books.begin() + index);
+        std::cout << "Книга удалена!\n";
     }
 };
 
