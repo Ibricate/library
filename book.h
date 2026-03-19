@@ -6,6 +6,7 @@ private:
     char Title[255];
     char Author[255];
     int PublishedYear;
+    int numpp = 0;
 
 public:
     Book()
@@ -42,15 +43,26 @@ public:
                 throw std::runtime_error("Ошибка ввода: ожидалось целое число.");
             }
         }
+        numpp++;
+
     }
 
     void Print() const
     {
-        std::cout << Author << "\t" << Title << "\t" << PublishedYear << std::endl;
+        std::cout << numpp << "\t" << Author << "\t" << Title << "\t" << PublishedYear << std::endl;
     }
 
-    const char* GetTitle() const { return Title; }
-    const char* GetAuthor() const { return Author; }
-    int GetYear() const { return PublishedYear; }
+    const char* GetTitle() const 
+    { 
+        return Title;
+    }
+    const char* GetAuthor() const
+    {
+        return Author; 
+    }
+    int GetYear() const 
+    { 
+        return PublishedYear;
+    }
 };
 
