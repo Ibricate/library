@@ -24,12 +24,24 @@ public:
 
     void SetFromConsole()
     {
-        std::cout << "Äîáàâëåíèå êíèãè.\nÂâåäèòå àâòîðà êíèãè: ";
+        std::cout << "Ã„Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­Ã¨Ã¥ ÃªÃ­Ã¨Ã£Ã¨.\nÃ‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã Ã¢Ã²Ã®Ã°Ã  ÃªÃ­Ã¨Ã£Ã¨: ";
         std::cin >> Author;
-        std::cout << "Ââåäèòå íàçâàíèå êíèãè: ";
+        std::cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã Ã§Ã¢Ã Ã­Ã¨Ã¥ ÃªÃ­Ã¨Ã£Ã¨: ";
         std::cin >> Title;
-        std::cout << "Ââåäèòå ãîä ïóáëèêàöèè: ";
-        std::cin >> PublishedYear;
+        while (true)
+        {
+            std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ð¾Ð´ Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ†Ð¸Ð¸: ";
+            if (std::cin >> PublishedYear)
+            {
+                if (PublishedYear < 0)
+                    throw std::invalid_argument("Ð“Ð¾Ð´ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼.");
+                break;
+            }
+            else
+            {
+                throw std::runtime_error("ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°: Ð¾Ð¶Ð¸Ð´Ð°Ð»Ð¾ÑÑŒ Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾.");
+            }
+        }
     }
 
     void Print() const
