@@ -6,7 +6,6 @@ private:
     char Title[255];
     char Author[255];
     int PublishedYear;
-    int numpp = 0;
 
 public:
     Book()
@@ -25,10 +24,11 @@ public:
 
     void SetFromConsole()
     {
-        std::cout << "Äîáàâëåíèå êíèãè.\nÂâåäèòå àâòîðà êíèãè: ";
+        std::cout << "Добавление книги.\nВведите автора книги: ";
         std::cin >> Author;
-        std::cout << "Ââåäèòå íàçâàíèå êíèãè: ";
+        std::cout << "Введите название книги: ";
         std::cin >> Title;
+
         while (true)
         {
             std::cout << "Введите год публикации: ";
@@ -41,15 +41,15 @@ public:
             else
             {
                 throw std::runtime_error("Ошибка ввода: ожидалось целое число.");
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
             }
         }
-        numpp++;
-
     }
 
     void Print() const
     {
-        std::cout << numpp << "\t" << Author << "\t" << Title << "\t" << PublishedYear << std::endl;
+        std::cout << Author << "\t" << Title << "\t" << PublishedYear << std::endl;
     }
 
     const char* GetTitle() const 
